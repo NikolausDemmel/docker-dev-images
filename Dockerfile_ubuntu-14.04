@@ -6,9 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Basic packages
 RUN apt-get update && apt-get install -y \
     software-properties-common \
-    locales \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    locales
 
 # Set the locale
 RUN locale-gen en_US.UTF-8
@@ -25,9 +23,7 @@ RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
 RUN add-apt-repository -y ppa:george-edison55/cmake-3.x
 
 # upgrade packages
-RUN apt-get update && apt-get upgrade -y \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get upgrade -y
 
 # Install base dependencies
 RUN apt-get update && apt-get install -y \
@@ -39,20 +35,17 @@ RUN apt-get update && apt-get install -y \
     wget \
     python \
     git \
-    ccache \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    ccache
 
-# Install some tools
-RUN apt-get update && apt-get install -y \
-    python \
-    emacs \
-    vim
-    
 # Install larger libs
 RUN apt-get update && apt-get install -y \
     libboost-all-dev \
     libopencv-dev
+
+# Install some tools
+RUN apt-get update && apt-get install -y \
+    emacs \
+    vim
 
 
 # GCC 5 default:

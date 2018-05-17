@@ -22,16 +22,16 @@ RUN apt-get update && apt-get install -y \
     cmake \
     pkg-config \
     wget \
+    python \
     git \
     ccache
 
-# Install some tools
-RUN apt-get update && apt-get install -y \
-    python \
-    emacs \
-    vim
-    
 # Install larger libs
 RUN apt-get update && apt-get install -y \
     libboost-all-dev \
     libopencv-dev
+
+# Install some tools
+RUN apt-get update && apt-get install -y \
+    emacs \
+    vim
